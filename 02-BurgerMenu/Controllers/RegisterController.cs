@@ -21,7 +21,7 @@ namespace _02_BurgerMenu.Controllers
         {
             context.Admins.Add(admin);
             context.SaveChanges();
-            return RedirectToAction("Index","Login");
+            return RedirectToAction("Index","Login"); //register olduktan sonra login sayfasına yönlendirdik
         }
     }
 }

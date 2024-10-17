@@ -15,8 +15,8 @@ namespace _02_BurgerMenu.Areas.Admin.Controllers
 
         public ActionResult MyProfileList()
         {
-            var userName=Session["x"];
-            var values = context.Admins.Where(x => x.Username == userName).FirstOrDefault();
+            var userName=Session["x"]; //eğer kullanıcı doğru bir şekilde login olursa, kullanıcı adını Session["x"] içine atamıştık. Şimdi onu burda yine kullanıyoruz
+            var values = context.Admins.Where(x => x.Username == userName).FirstOrDefault(); //bu bize giriş yapan kullanıcının bilgilerini getirecek
 
             return View(values);
         }
@@ -24,6 +24,8 @@ namespace _02_BurgerMenu.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult MyProfileList(_02_BurgerMenu.Entities.Admin admin)
         {
+            //update işlemi:
+
             var userName = Session["x"];
             var values = context.Admins.Where(x => x.Username == userName).FirstOrDefault();
             values.Username= admin.Username;
@@ -33,7 +35,7 @@ namespace _02_BurgerMenu.Areas.Admin.Controllers
             values.Email= admin.Email;
             context.SaveChanges();
 
-            return RedirectToAction("Index", "Login");
+            return RedirectToAction("Index", "Login"); //temel bilgileri değiştirdikten sonra tekrar login olmasını istediğimiz için Login sayfasına yönlendirdik
         }
     }
 }

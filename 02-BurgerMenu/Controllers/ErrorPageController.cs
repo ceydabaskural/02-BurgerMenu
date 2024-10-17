@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace _02_BurgerMenu.Controllers
 {
-    public class ErrorController : Controller
+    public class ErrorPageController : Controller
     {
         // GET: Error
         public ActionResult Page404()

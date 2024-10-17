@@ -132,7 +132,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminLayoutController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
-    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Context\BurgerMenuContext.cs" />
@@ -1704,9 +1704,16 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
-    <Content Include="Views\Error\Page404.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Default\PartialHead.cshtml" />
+    <Content Include="Views\ErrorPage\Page404.cshtml" />
+    <Content Include="Views\Default\PartialNavbar.cshtml" />
+    <Content Include="Views\Default\PartialAbout.cshtml" />
+    <Content Include="Views\Default\PartialTodaysOffer.cshtml" />
+    <Content Include="Views\Default\PartialMenu.cshtml" />
+    <Content Include="Views\Default\PartialGallery.cshtml" />
+    <Content Include="Views\Default\PartialFooter.cshtml" />
+    <Content Include="Views\Default\PartialScript.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
