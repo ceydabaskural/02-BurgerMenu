@@ -26,8 +26,9 @@ namespace _02_BurgerMenu.Controllers
 
             if (values != null)
             {
-                FormsAuthentication.SetAuthCookie(values.Username, false);
-                Session["x"] = values.Username.ToString();
+                //oturum açma kodları:                
+                FormsAuthentication.SetAuthCookie(values.Username, false); //false diyerek username in arka planda kaydedilmemesini sağladık
+                Session["x"] = values.Username.ToString(); //username i string olarak tutulmasını istedik ve bunu Session["x"] e atadık
                 return RedirectToAction("ProductList", "Product", new { area = "Admin" });
             }
             else

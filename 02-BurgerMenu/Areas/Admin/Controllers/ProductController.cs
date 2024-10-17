@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace _02_BurgerMenu.Areas.Admin.Controllers
 {
-    [Authorize]
+    [Authorize] //bu classı authorize attribute üne dahil ettik
     public class ProductController : Controller
     {
         BurgerMenuContext  context= new BurgerMenuContext();
