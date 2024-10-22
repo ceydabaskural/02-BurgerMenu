@@ -142,6 +142,7 @@
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\DealOfTheDay.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\Reservation.cs" />
     <Compile Include="Entities\Testimonial.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -157,6 +158,14 @@
     <Compile Include="Migrations\202410151130272_mig3.cs" />
     <Compile Include="Migrations\202410151130272_mig3.Designer.cs">
       <DependentUpon>202410151130272_mig3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202410181121129_mig4.cs" />
+    <Compile Include="Migrations\202410181121129_mig4.Designer.cs">
+      <DependentUpon>202410181121129_mig4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202410181248458_mig5.cs" />
+    <Compile Include="Migrations\202410181248458_mig5.Designer.cs">
+      <DependentUpon>202410181248458_mig5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1704,7 +1713,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
-    <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Default\PartialHead.cshtml" />
     <Content Include="Views\ErrorPage\Page404.cshtml" />
     <Content Include="Views\Default\PartialNavbar.cshtml" />
@@ -1714,6 +1722,9 @@
     <Content Include="Views\Default\PartialGallery.cshtml" />
     <Content Include="Views\Default\PartialFooter.cshtml" />
     <Content Include="Views\Default\PartialScript.cshtml" />
+    <Content Include="Views\Default\PartialCategory.cshtml" />
+    <Content Include="Views\Default\PartialReservation.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1761,6 +1772,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202410151130272_mig3.resx">
       <DependentUpon>202410151130272_mig3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410181121129_mig4.resx">
+      <DependentUpon>202410181121129_mig4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410181248458_mig5.resx">
+      <DependentUpon>202410181248458_mig5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

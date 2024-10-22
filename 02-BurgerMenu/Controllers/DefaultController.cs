@@ -1,4 +1,6 @@
-﻿using System;
+﻿using _02_BurgerMenu.Context;
+using _02_BurgerMenu.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +10,8 @@ namespace _02_BurgerMenu.Controllers
 {
     public class DefaultController : Controller
     {
-        // GET: Default
+        BurgerMenuContext context = new BurgerMenuContext();
+
         public ActionResult Index()
         {
             return View();
@@ -30,13 +33,23 @@ namespace _02_BurgerMenu.Controllers
 
         public PartialViewResult PartialTodaysOffer()
         {
-            return PartialView();
+            var values = context.Products.Where(x => x.DealOfTheDay==true).ToList();
+            return PartialView(values);
         }
 
         public PartialViewResult PartialMenu()
         {
-            return PartialView();
+            var value = context.Products.ToList();
+            return PartialView(value);
         }
+
+        public PartialViewResult PartialCategory()
+        {
+            //Take metodu a'dan z'ye sıralayarak alır.
+            var values = context.Categories.Take(6).ToList(); 
+            return PartialView(values);
+        }
+
         public PartialViewResult PartialGallery()
         {
             return PartialView();
@@ -50,6 +63,22 @@ namespace _02_BurgerMenu.Controllers
             return PartialView();
         }
 
+        [HttpGet]
+        public PartialViewResult PartialReservation()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public PartialViewResult PartialReservation(Reservation reservation)
+        {
+            reservation.ReservationStatus = "Onay Bekleniyor";
+            reservation.PersonCount = 0;
+            reservation.ReservationDate = DateTime.Now;
+            context.Reservations.Add(reservation);
+            context.SaveChanges();
+            return PartialView();
+        }
 
 
     }
