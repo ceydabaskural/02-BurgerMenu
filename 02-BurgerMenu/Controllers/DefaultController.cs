@@ -30,29 +30,41 @@ namespace _02_BurgerMenu.Controllers
         {
             return PartialView();
         }
+        public PartialViewResult PartialAboutDetail()
+        {
+            var value = context.Abouts.ToList();
+            return PartialView(value);
+        }
 
         public PartialViewResult PartialTodaysOffer()
         {
-            var values = context.Products.Where(x => x.DealOfTheDay==true).ToList();
+            var values = context.Products.Where(x => x.DealOfTheDay == true).ToList();
             return PartialView(values);
         }
 
         public PartialViewResult PartialMenu()
         {
             var value = context.Products.ToList();
-            return PartialView(value);
+            return PartialView("PartialMenu", value);
         }
 
+        
         public PartialViewResult PartialCategory()
         {
-            //Take metodu a'dan z'ye sıralayarak alır.
-            var values = context.Categories.Take(6).ToList(); 
-            return PartialView(values);
+            var values = context.Categories.Take(10).ToList();
+            return PartialView("PartialCategory",values);
+        }
+
+        public PartialViewResult PartialCategoryDetail(int id)
+        {
+            var value = context.Products.Where(p => p.CategoryId == id).ToList();
+            return PartialView(value);
         }
 
         public PartialViewResult PartialGallery()
         {
-            return PartialView();
+            var value = context.Galleries.ToList();
+            return PartialView(value);
         }
         public PartialViewResult PartialScript()
         {
@@ -80,6 +92,35 @@ namespace _02_BurgerMenu.Controllers
             return PartialView();
         }
 
+        [HttpGet]
+        public PartialViewResult PartialContact()
+        {
+            ViewBag.MapLocation = context.Abouts.Select(a => a.MapLocation).FirstOrDefault();
+            return PartialView();
+        }
+
+        [HttpPost]
+        public PartialViewResult PartialContact(Contact contact)
+        {
+            context.Contacts.Add(contact);
+            context.SaveChanges();
+            return PartialView();
+        }
+
+        [HttpGet]
+        public PartialViewResult PartialSubscription()
+        {
+            var value = context.Subscribers.ToList();
+            return PartialView(value);
+        }
+
+        [HttpPost]
+        public PartialViewResult PartialSubscription(Subscriber subscriber)
+        {
+            context.Subscribers.Add(subscriber);
+            context.SaveChanges();
+            return PartialView();
+        }
 
     }
 }

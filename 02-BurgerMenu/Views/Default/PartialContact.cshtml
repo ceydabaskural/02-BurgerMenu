@@ -1,0 +1,55 @@
+﻿@model _02_BurgerMenu.Entities.Contact
+<section class="site-section bg-light" id="section-contact">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 text-center mb-5 site-animate">
+                <h2 class="display-4">İletişim</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-7">
+                        <p class="lead">Detaylı bilgi, rezervasyon, soru ve önerileriniz için bize yazabilirsiniz!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7 mb-5 site-animate">
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label for="name" class="sr-only">Ad Soyad</label>
+                        <input type="text" class="form-control" name="NameSurname" id="name" placeholder="Adınız Soyadınız">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="text" class="form-control" name="Email" id="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="sr-only">Mesaj</label>
+                        <textarea name="Message" id="message" cols="30" rows="10" class="form-control" placeholder="Mesajınızı buraya yazınız.."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-lg" value="Gönder">
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-4 site-animate">
+                <p><img src="images/about_img_1.jpg" alt="" class="img-fluid"></p>
+                <p class="text-black">
+                    Adres: <br> 129 Sokak No:10 <br> Urla - İzmir <br> <br>
+                    Telefon: <br> 90 987 65 44 <br> <br>
+                    Email: <br> <a href="mailto:info@yoursite.com">info@yoursite.com</a>
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<div class="col-12 wow fadeInUp" data-wow-delay="0.5s">
+    <div class="rounded">
+        <iframe src="@ViewBag.MapLocation"
+                width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>

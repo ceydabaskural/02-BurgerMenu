@@ -1,0 +1,28 @@
+﻿@model _02_BurgerMenu.Entities.About
+@{
+    ViewBag.Title = "CreateAbout";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="col-9 card-body  ">
+            <h4 class="card-title">Yeni Kategori Girişi</h4>
+            <br />
+            <form method="post">
+                <label>Üst Başlık</label>
+                @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                <br />
+                <label>Alt Başlık</label>
+                @Html.TextBoxFor(x => x.SubTitle, new { @class = "form-control" })
+                <br />
+                <label>Açıklama</label>
+                @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+                <br />
+                <button class="btn btn-dark">Ekle</button>
+            </form>
+        </div>
+    </div>
+</div>
+

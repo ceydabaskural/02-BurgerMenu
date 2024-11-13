@@ -1,0 +1,201 @@
+﻿@{
+    ViewBag.Title = "StatisticList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="panel panel-dark panel-colorful">
+                <div class="panel-body text-center">
+                    <p class="text-uppercase mar-btm text-sm"><b>Abone Sayısı</b></p>
+                    <i class="fa fa-users fa-5x" style="color: #58B19F"></i>
+                    <hr>
+                    <p class="h2 text-thin">@ViewBag.Subsriber</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="panel panel-danger panel-colorful">
+                <div class="panel-body text-center">
+                    <p class="text-uppercase mar-btm text-sm"><b>Ürünler</b></p>
+                    <i class="fa fa-shopping-cart fa-5x" style="color: #3B3B98"></i>
+                    <hr>
+                    <p class="h2 text-thin">@ViewBag.Product</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="panel panel-primary panel-colorful">
+                <div class="panel-body text-center">
+                    <p class="text-uppercase mar-btm text-sm"><b>Kategoriler</b></p>
+                    <i class="fa fa-list fa-5x" style="color: #82589F"></i>
+                    <hr>
+                    <p class="h2 text-thin">@ViewBag.Category</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="panel panel-info panel-colorful">
+                <div class="panel-body text-center">
+                    <p class="text-uppercase mar-btm text-sm"><b>Admin Sayısı</b></p>
+                    <i class="fa fa-adn fa-5x" style="color: #55E6C1"></i>
+                    <hr>
+                    <p class="h2 text-thin">@ViewBag.Login</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 mt-5">
+            <div class="panel panel-info panel-colorful">
+                <div class="panel-body text-center">
+                    <p class="text-uppercase mar-btm text-sm"><b>Referanslar</b></p>
+                    <i class="fa fa-random fa-5x" style="color: #FD7272"></i>
+                    <hr>
+                    <p class="h2 text-thin">@ViewBag.Referance</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 mt-5">
+            <div class="panel panel-info panel-colorful">
+                <div class="panel-body text-center">
+                    <p class="text-uppercase mar-btm text-sm"><b>Gelen Mesaj Sayısı</b></p>
+                    <i class="fa fa-comment fa-5x" style="color: #3B3B98"></i>
+                    <hr>
+                    <p class="h2 text-thin">@ViewBag.Inbox</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 mt-5">
+            <div class="panel panel-info panel-colorful">
+                <div class="panel-body text-center">
+                    <p class="text-uppercase mar-btm text-sm"><b>Rezervasyon Sayısı</b></p>
+                    <i class="fa fa-bar-chart fa-5x" style="color: #6D214F"></i>
+                    <hr>
+                    <p class="h2 text-thin">@ViewBag.Reservation</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 mt-5">
+            <div class="panel panel-info panel-colorful">
+                <div class="panel-body text-center">
+                    <p class="text-uppercase mar-btm text-sm"><b>Değerlendirme Sayısı</b></p>
+                    <i class="fa fa-check fa-5x" style="color: #2C3A47"></i>
+                    <hr>
+                    <p class="h2 text-thin">@ViewBag.Referance</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 mt-5">
+            <div class="panel panel-info panel-colorful">
+                <div class="panel-body text-center">
+                    <p class="text-uppercase mar-btm text-sm"><b>Tamamlanan Rezervasyon</b></p>
+                    <i class="fa fa-joomla fa-5x" style="color: #EAB543"></i>
+                    <hr>
+                    <p class="h2 text-thin">@ViewBag.ReservationStatus</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 mt-5">
+            <div class="panel panel-info panel-colorful">
+                <div class="panel-body text-center">
+                    <p class="text-uppercase mar-btm text-sm"><b>Galeri</b></p>
+                    <i class="fa fa-image fa-5x" style="color: #B33771"></i>
+                    <hr>
+                    <p class="h2 text-thin">@ViewBag.Gallery</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 mt-5">
+            <div class="panel panel-info panel-colorful">
+                <div class="panel-body text-center">
+                    <p class="text-uppercase mar-btm text-sm"><b>En Son Mesaj Gönderen Kişi</b></p>
+                    <i class="fa fa-commenting fa-5x" style="color: #BDC581"></i>
+                    <hr>
+                    <p class="h4 text-thin">@ViewBag.senderName</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 mt-5">
+            <div class="panel panel-info panel-colorful">
+                <div class="panel-body text-center">
+                    <p class="text-uppercase mar-btm text-sm"><b>Okunmamış Mesaj Sayısı</b></p>
+                    <i class="fa fa-dot-circle-o fa-5x" style="color: #F8EFBA"></i>
+                    <hr>
+                    <p class="h2 text-thin">@ViewBag.messageIsRead</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@*body{
+    background:#eee;
+    margin-top:20px;
+}
+
+.panel {
+  box-shadow: 0 2px 0 rgba(0,0,0,0.05);
+  border-radius: 0;
+  border: 0;
+  margin-bottom: 24px;
+}
+
+.panel-dark.panel-colorful {
+  background-color: #3b4146;
+  border-color: #3b4146;
+  color: #fff;
+}
+
+.panel-danger.panel-colorful {
+  background-color: #f76c51;
+  border-color: #f76c51;
+  color: #fff;
+}
+
+.panel-primary.panel-colorful {
+  background-color: #5fa2dd;
+  border-color: #5fa2dd;
+  color: #fff;
+}
+
+.panel-info.panel-colorful {
+  background-color: #4ebcda;
+  border-color: #4ebcda;
+  color: #fff;
+}
+
+.panel-body {
+  padding: 25px 20px;
+}
+
+.panel hr {
+  border-color: rgba(0,0,0,0.1);
+}
+
+.mar-btm {
+  margin-bottom: 15px;
+}
+
+h2, .h2 {
+  font-size: 28px;
+}
+
+.small, small {
+  font-size: 85%;
+}
+
+.text-sm {
+  font-size: .9em;
+}
+
+.text-thin {
+  font-weight: 300;
+}
+
+.text-semibold {
+  font-weight: 600;
+}*@

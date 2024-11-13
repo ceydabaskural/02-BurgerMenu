@@ -1,0 +1,51 @@
+﻿@model List<_02_BurgerMenu.Entities.About>
+
+
+@Html.Action("PartialHead", "Default")
+
+
+
+@*<nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">EatWell</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="site-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a href="#section-home" class="nav-link">Ana Sayfa</a></li>
+                <li class="nav-item"><a href="#section-about" class="nav-link">Hakkımızda</a></li>
+                <li class="nav-item"><a href="#section-offer" class="nav-link">Öne Çıkanlar</a></li>
+                <li class="nav-item"><a href="#section-menu" class="nav-link">Menü</a></li>
+                <li class="nav-item"><a href="#section-gallery" class="nav-link">Galeri</a></li>
+                <li class="nav-item"><a href="#section-contact" class="nav-link">İletişim</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>*@
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 site-animate mb-5">
+            @foreach (var item in Model)
+            {
+                <h4 class="site-sub-title">@item.Title</h4>
+                <h2 class="site-primary-title display-4">@item.SubTitle !</h2>
+                <p>Seçkin bir menünün tadına varırken, muhteşem aromaların büyüsüne kapılıp, atmosferin etkileyiciliğini hissedeceksiniz… @item.Description </p>
+            }
+
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="col-md-1"></div>
+            <div class="col-md-6 site-animate img mt-5" data-animate-effect="fadeInRight">
+                <img src="@item.ImageUrl" alt="Free Template by colorlib.com" class="img-fluid">
+            </div>
+        }
+    </div>
+</div>
+
+@Html.Action("PartialScript", "Default")
+@Html.Action("PartialFooter", "Default")

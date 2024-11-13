@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "GraphicList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<!-- partial -->
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Ürün Sayısı</h4>
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Abone Sayısı</h4>
+                        <canvas id="barChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Rezervasyon Sayısı</h4>
+                        <canvas id="areaChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Kategoriler</h4>
+                        <canvas id="doughnutChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from Bootstrapdash.com</span>
+        </div>
+    </footer>
+    <!-- partial -->
+</div>
+<!-- main-panel ends -->
+    </div>
+<!-- page-body-wrapper ends -->
+  </div>
+<!-- container-scroller -->
+<!-- base:js -->
+<script src="~/regal/vendors/base/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src=".~/regal/js/off-canvas.js"></script>
+<script src="~/regal/js/hoverable-collapse.js"></script>
+<script src="~/regal/js/template.js"></script>
+<!-- endinject -->
+<!-- plugin js for this page -->
+<script src="~/regal/vendors/chart.js/Chart.min.js"></script>
+<!-- End plugin js for this page -->
+<!-- Custom js for this page-->
+<script src="~/Content/Graphic/chart.js"></script>
+<!-- End custom js for this page-->
+</body>

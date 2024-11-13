@@ -1,7 +1,8 @@
 ﻿@model  List<_02_BurgerMenu.Entities.Product>
 @{
-    ViewBag.Title = "ProductList";
+    ViewBag.Title = "ProductIndex";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
 }
 
 <div class="col-lg-12 grid-margin stretch-card">
@@ -14,7 +15,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Ürün Id</th>
+                            <th>Ürün No</th>
                             <th>Ürün Görsel</th>
                             <th>Ürün Adı</th>
                             <th>Ürün Kategori</th>
@@ -25,13 +26,14 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
+                            count++;
                             <tr>
-                                <td>@item.ProductId</td>
+                                <td>@count</td>
                                 <td><img src="@item.ImageUrl" height="50" width="50"/></td>
                                 <td>@item.ProductName</td>
                                 <td>@item.Category.CategoryName</td>
-                                <td><a href="/Admin/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">Sil</a></td>
-                                <td><a href="/Admin/Product/UpdateProduct/@item.ProductId" class="btn btn-success">Güncelle</a></td>
+                                <td><a href="/Admin/Product/DeleteProduct/@item.ProductId" class="btn btn-outline-danger">Sil</a></td>
+                                <td><a href="/Admin/Product/UpdateProduct/@item.ProductId" class="btn btn-outline-success">Güncelle</a></td>
                             </tr>
                         }
 

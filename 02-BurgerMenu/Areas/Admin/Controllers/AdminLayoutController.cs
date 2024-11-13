@@ -1,4 +1,6 @@
-﻿using System;
+﻿using _02_BurgerMenu.Context;
+using _02_BurgerMenu.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +10,7 @@ namespace _02_BurgerMenu.Areas.Admin.Controllers
 {
     public class AdminLayoutController : Controller
     {
-        // GET: Admin/AdminLayout
+        BurgerMenuContext context = new BurgerMenuContext();
         public ActionResult Index()
         {
             return View();
@@ -27,5 +29,19 @@ namespace _02_BurgerMenu.Areas.Admin.Controllers
             return PartialView();
         }
 
+        [HttpGet]
+        public PartialViewResult PartialCategoryAdd()
+        {
+            return PartialView();
+        }
+
+
+        [HttpPost]
+        public PartialViewResult PartialCategoryAdd(Category category)
+        {
+            context.Categories.Add(category);
+            context.SaveChanges();
+            return PartialView();
+        }
     }
 }

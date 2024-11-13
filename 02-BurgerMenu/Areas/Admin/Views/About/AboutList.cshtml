@@ -1,0 +1,48 @@
+﻿@model List<_02_BurgerMenu.Entities.About>
+@{
+    ViewBag.Title = "AboutList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Hakkımızda</h4>
+            <p class="card-description">
+            </p>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Üst Başlık</th>
+                            <th>Alt Başlık</th>
+                            <th>Açıklama</th>
+                            @*<th>Konum</th>*@
+                            <th>Sil</th>
+                            <th>Güncelle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>@count</td>
+                                <td>@item.Title</td>
+                                <td>@item.SubTitle</td>
+                                <td>@item.Description</td>
+                                @*<td>@item.MapLocation</td>*@
+                                <td><a href="/Admin/About/DeleteAbout/@item.AboutId" class="btn btn-outline-danger">Sil</a></td>
+                                <td><a href="/Admin/About/UpdateAbout/@item.AboutId" class="btn btn-outline-success">Güncelle</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a href="/Admin/About/CreateAbout" class="btn btn-primary mt-2">Yeni Hakkımızda Girişi</a>
+            </div>
+        </div>
+    </div>
+</div>
+

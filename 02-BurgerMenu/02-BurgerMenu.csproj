@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -47,10 +47,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -128,9 +128,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AboutController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminLayoutController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CreditCardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GraphicController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MessageController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReferanceController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReservationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StatisticController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -138,11 +147,16 @@
     <Compile Include="Context\BurgerMenuContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Entities\About.cs" />
     <Compile Include="Entities\Admin.cs" />
     <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\DealOfTheDay.cs" />
+    <Compile Include="Entities\Gallery.cs" />
+    <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\Reservation.cs" />
+    <Compile Include="Entities\Subscriber.cs" />
     <Compile Include="Entities\Testimonial.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -167,6 +181,30 @@
     <Compile Include="Migrations\202410181248458_mig5.Designer.cs">
       <DependentUpon>202410181248458_mig5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202410221111329_mig6.cs" />
+    <Compile Include="Migrations\202410221111329_mig6.Designer.cs">
+      <DependentUpon>202410221111329_mig6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202410221830275_mig-7.cs" />
+    <Compile Include="Migrations\202410221830275_mig-7.Designer.cs">
+      <DependentUpon>202410221830275_mig-7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202410240636075_mig-8.cs" />
+    <Compile Include="Migrations\202410240636075_mig-8.Designer.cs">
+      <DependentUpon>202410240636075_mig-8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202410261649161_mig-9.cs" />
+    <Compile Include="Migrations\202410261649161_mig-9.Designer.cs">
+      <DependentUpon>202410261649161_mig-9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202410270919171_mig-10.cs" />
+    <Compile Include="Migrations\202410270919171_mig-10.Designer.cs">
+      <DependentUpon>202410270919171_mig-10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202410271157152_mig-11.cs" />
+    <Compile Include="Migrations\202410271157152_mig-11.Designer.cs">
+      <DependentUpon>202410271157152_mig-11.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -174,6 +212,7 @@
     <Content Include="colorlib-error-404-6\css\style.css" />
     <Content Include="colorlib-error-404-6\index.html" />
     <Content Include="colorlib-error-404-6\readme.txt" />
+    <Content Include="Content\Admin\download.jpeg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -190,6 +229,15 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\CreditCard\chip.png" />
+    <Content Include="Content\CreditCard\visa.png" />
+    <Content Include="Content\GalleryImages\images1.jpg" />
+    <Content Include="Content\GalleryImages\images2.jpg" />
+    <Content Include="Content\GalleryImages\images3.jpg" />
+    <Content Include="Content\GalleryImages\images4.jpg" />
+    <Content Include="Content\GalleryImages\images5.jpg" />
+    <Content Include="Content\GalleryImages\images6.jpg" />
+    <Content Include="Content\Graphic\chart.js" />
     <Content Include="eatwell-master\.gitattributes" />
     <Content Include="eatwell-master\css\ajax-loader.gif" />
     <Content Include="eatwell-master\css\animate.css" />
@@ -1687,6 +1735,29 @@
     <Content Include="eatwell-master\images\.DS_Store" />
     <Content Include="eatwell-master\prepros-6.config" />
     <Content Include="eatwell-master\scss\style.scss" />
+    <Content Include="Areas\Admin\Views\Message\Inbox.cshtml" />
+    <Content Include="Areas\Admin\Views\Message\Sentbox.cshtml" />
+    <Content Include="Areas\Admin\Views\Message\NewMessage.cshtml" />
+    <Content Include="Areas\Admin\Views\Reservation\ReservationList.cshtml" />
+    <Content Include="Areas\Admin\Views\About\AboutList.cshtml" />
+    <Content Include="Areas\Admin\Views\Referance\ReferanceList.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistic\StatisticList.cshtml" />
+    <Content Include="Areas\Admin\Views\Graphic\GraphicList.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\CreateCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\UpdateCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\CategoryDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Reservation\UpdateReservation.cshtml" />
+    <Content Include="Areas\Admin\Views\Reservation\CreateReservation.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\DashboardList.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\CreatePopUpCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\CreditCard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Message\PartialMessageDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialCategoryAdd.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\About\CreateAbout.cshtml" />
+    <Content Include="Areas\Admin\Views\About\UpdateAbout.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\ContactList.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -1725,11 +1796,13 @@
     <Content Include="Views\Default\PartialCategory.cshtml" />
     <Content Include="Views\Default\PartialReservation.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Default\PartialContact.cshtml" />
+    <Content Include="Views\Default\PartialSubscription.cshtml" />
+    <Content Include="Views\Default\PartialAboutDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Models\" />
     <Folder Include="regal\.git\objects\info\" />
     <Folder Include="regal\.git\objects\pack\" />
@@ -1779,6 +1852,24 @@
     <EmbeddedResource Include="Migrations\202410181248458_mig5.resx">
       <DependentUpon>202410181248458_mig5.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410221111329_mig6.resx">
+      <DependentUpon>202410221111329_mig6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410221830275_mig-7.resx">
+      <DependentUpon>202410221830275_mig-7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410240636075_mig-8.resx">
+      <DependentUpon>202410240636075_mig-8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410261649161_mig-9.resx">
+      <DependentUpon>202410261649161_mig-9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410270919171_mig-10.resx">
+      <DependentUpon>202410270919171_mig-10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410271157152_mig-11.resx">
+      <DependentUpon>202410271157152_mig-11.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -1813,10 +1904,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

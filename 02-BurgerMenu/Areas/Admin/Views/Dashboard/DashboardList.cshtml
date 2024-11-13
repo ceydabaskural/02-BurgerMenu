@@ -1,0 +1,528 @@
+﻿
+
+@{
+    ViewBag.Title = "DashboardList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<style>
+    .legend-box {
+        width: 15px;
+        height: 15px;
+        border-radius: 3px;
+        margin-right: 3px;
+    }
+
+    .admin-box {
+        background-color: #007bff;
+    }
+
+    .referanslar-box {
+        background-color: #b200ff;
+    }
+
+    .legend-label {
+        margin-left: 5px;
+    }
+
+    .fw-bold {
+        font-weight: bold;
+    }
+
+    /* Kutucuklar ve metinleri arasında boşluklar ayarlandı */
+    .mb-1 {
+        margin-bottom: 0.25rem;
+    }
+</style>
+
+
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-sm-12 mb-4 mb-xl-0">
+            <h4 class="font-weight-bold text-dark">Merhaba, hoş geldiniz!</h4>
+            <p class="font-weight-normal mb-2 text-muted">@DateTime.Now.ToLongDateString()</p>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-xl-3 flex-column d-flex grid-margin stretch-card">
+            <div class="row flex-grow">
+                <div class="col-sm-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Abone Sayısı</h4>
+                            <h4 class="text-dark font-weight-bold mb-2">@ViewBag.subscriberCount</h4>
+                            <canvas id="customers"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Ürün Sayısı</h4>
+                            <h4 class="text-dark font-weight-bold mb-2">@ViewBag.productCount</h4>
+                            <canvas id="orders"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-9 d-flex grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Website Ziyaretleri</h4>
+                    <div class="row mb-3 justify-content-end">
+                        <!-- Admin ve Referansların sütun içinde hizalanması -->
+                        <div class="col-lg-5 text-end">
+                            <div class="d-flex flex-column align-items-center">
+                                <!-- Admin sayısı ve kutucuk-yazı aynı sütunda hizalandı -->
+                                <h5 class="fw-bold mb-0">1572</h5>
+                                <div class="d-flex align-items-center">
+                                    <div class="legend-box admin-box"></div>
+                                    <div class="legend-label">Görüntülenme</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5 text-end">
+                            <div class="d-flex flex-column align-items-center">
+                                <!-- Referanslar sayısı ve kutucuk-yazı aynı sütunda hizalandı -->
+                                <h5 class="fw-bold mb-0">@ViewBag.testimonial</h5>
+                                <div class="d-flex align-items-center">
+                                    <div class="legend-box referanslar-box"></div>
+                                    <div class="legend-label">Referanslar</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <canvas id="web-audience-metrics-satacked" class="mt-3"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="row">
+            <div class="col-xl-4 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h4 class="card-title">Rezervasyon Sayısı</h4>
+                            <div class="dropdown">
+                                <button class="btn btn-sm dropdown-toggle text-dark pt-0 pr-0" type="button" id="dropdownMenuSizeButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Bu Hafta
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton3">
+                                    <h6 class="dropdown-header">Bu Hafta</h6>
+                                    <h6 class="dropdown-header">Bu Ay</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="chart-legends-market-trend" class="chart-legends mt-1">
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-6">
+
+                            </div>
+                        </div>
+                        <div class="marketTrends mt-4">
+                            <canvas id="marketTrendssatacked"></canvas>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Kategoriler</h4>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="d-flex justify-content-between mt-2 text-dark mb-2">
+                                </div>
+                                <div class="progress progress-md grouped mb-2">
+                                    <div class="progress-bar  bg-danger" role="progressbar" style="width: 30%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar  bg-primary" role="progressbar" style="width: 10%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 10%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-light" role="progressbar" style="width: 25%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="traffic-source-legend">
+                                    <div class="d-flex justify-content-between mb-1 mt-2">
+                                        <div class="font-weight-bold"></div>
+                                        <div class="font-weight-bold">TOTAL</div>
+                                    </div>
+                                    <div class="d-flex justify-content-between legend-label">
+                                        <div><span class="bg-danger"></span>Ana Yemekler</div>
+                                        <div>30%</div>
+                                    </div>
+                                    <div class="d-flex justify-content-between legend-label">
+                                        <div><span class="bg-info"></span>Soğuk Başlangıçlar</div>
+                                        <div>20%</div>
+                                    </div>
+                                    <div class="d-flex justify-content-between legend-label">
+                                        <div><span class="bg-primary"></span>Kahvaltılar</div>
+                                        <div>10%</div>
+                                    </div>
+                                    <div class="d-flex justify-content-between legend-label">
+                                        <div><span class="bg-warning"></span>İçecekler</div>
+                                        <div>10%</div>
+                                    </div>
+                                    <div class="d-flex justify-content-between legend-label">
+                                        <div><span class="bg-success"></span>Çorbalar</div>
+                                        <div>5%</div>
+                                    </div>
+                                    <div class="d-flex justify-content-between legend-label">
+                                        <div><span class="bg-light"></span>Mezeler</div>
+                                        <div>25%</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title mb-3">Recent Activity</h4>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="text-dark">
+                                    <div class="d-flex pb-3 border-bottom justify-content-between">
+                                        <div class="mr-3"><i class="mdi mdi-signal-cellular-outline icon-md"></i></div>
+                                        <div class="font-weight-bold mr-sm-4">
+                                            <div>Deposit has updated to Paid</div>
+                                            <div class="text-muted font-weight-normal mt-1">32 Minutes Ago</div>
+                                        </div>
+                                        <div><h6 class="font-weight-bold text-info ml-sm-2">$325</h6></div>
+                                    </div>
+                                    <div class="d-flex pb-3 pt-3 border-bottom justify-content-between">
+                                        <div class="mr-3"><i class="mdi mdi-signal-cellular-outline icon-md"></i></div>
+                                        <div class="font-weight-bold mr-sm-4">
+                                            <div>Your Withdrawal Proceeded</div>
+                                            <div class="text-muted font-weight-normal mt-1">45 Minutes Ago</div>
+                                        </div>
+                                        <div><h6 class="font-weight-bold text-info ml-sm-2">$4987</h6></div>
+                                    </div>
+                                    <div class="d-flex pb-3 pt-3 border-bottom justify-content-between">
+                                        <div class="mr-3"><i class="mdi mdi-signal-cellular-outline icon-md"></i></div>
+                                        <div class="font-weight-bold mr-sm-4">
+                                            <div>Deposit has updated to Paid                              </div>
+                                            <div class="text-muted font-weight-normal mt-1">1 Days Ago</div>
+                                        </div>
+                                        <div><h6 class="font-weight-bold text-info ml-sm-2">$5391</h6></div>
+                                    </div>
+                                    <div class="d-flex pt-3 justify-content-between">
+                                        <div class="mr-3"><i class="mdi mdi-signal-cellular-outline icon-md"></i></div>
+                                        <div class="font-weight-bold mr-sm-4">
+                                            <div>Deposit has updated to Paid</div>
+                                            <div class="text-muted font-weight-normal mt-1">3 weeks Ago</div>
+                                        </div>
+                                        <div><h6 class="font-weight-bold text-info ml-sm-2">$264</h6></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    <div class="row">
+        <div class="col-xl-9 grid-margin-lg-0 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">En Çok Beğenilen Ürünler</h4>
+                    <div class="table-responsive mt-3">
+                        <table class="table table-header-bg">
+                            <thead>
+                                <tr>
+                                    <th>Ürün</th>
+                                    <th>Fiyat</th>
+                                    <th>Aylık Değişim</th>
+                                    <th>Beğenilme Oranı</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var progress =0;
+                                    var progressColor = "bg-info";
+
+                                    <tr>
+                                        <td>Barbun Balığı</td>
+                                        <td>200₺</td>
+                                        <td>
+                                            <div class="text-success"><i class="icon-arrow-up mr-2"></i>+35%</div>
+                                        </td>
+
+
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-sm-10">
+                                                    <div class="progress">
+                                                        <div class="progress-bar @progressColor" role="progressbar" style="width: 85%" aria-valuenow="@progress" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    85%
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Margherita</td>
+                                        <td>150₺</td>
+                                        <td>
+                                            <div class="text-success"><i class="icon-arrow-up mr-2"></i>+15%</div>
+                                        </td>
+
+
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-sm-10">
+                                                    <div class="progress">
+                                                        <div class="progress-bar @progressColor" role="progressbar" style="width: 60%" aria-valuenow="@progress" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    60%
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Burrata</td>
+                                        <td>180₺</td>
+                                        <td>
+                                            <div class="text-success"><i class="icon-arrow-up mr-2"></i>40%</div>
+                                        </td>
+
+
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-sm-10">
+                                                    <div class="progress">
+                                                        <div class="progress-bar @progressColor" role="progressbar" style="width: 25%" aria-valuenow="@progress" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    25%
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vegan Bowl</td>
+                                        <td>100₺</td>
+                                        <td>
+                                            <div class="text-success"><i class="icon-arrow-up mr-2"></i>+20%</div>
+                                        </td>
+
+
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-sm-10">
+                                                    <div class="progress">
+                                                        <div class="progress-bar @progressColor" role="progressbar" style="width: 90%" aria-valuenow="@progress" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    90%
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 grid-margin-lg-0 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">Değerlendirmeler</h4>
+                    <div class="d-flex">
+                        <div>
+                            <h4 class="text-dark font-weight-bold mb-2 mr-2">4.3</h4>
+                        </div>
+                        <div>
+                            <select id="over-all-rating" name="rating" autocomplete="off">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <p class="mb-4">Based on 186 reviews</p>
+                    <div class="row">
+                        <div class="col-sm-2 pr-0">
+                            <div class="d-flex">
+                                <div>
+                                    <div class="text-dark font-weight-bold mb-2 mr-2">5</div>
+                                </div>
+                                <div>
+                                    <i class="fa fa-star text-warning"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-9 pl-2">
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    <div class="progress progress-lg mt-1">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 p-lg-0">
+                                    80%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-2 pr-0">
+                            <div class="d-flex">
+                                <div>
+                                    <div class="text-dark font-weight-bold mb-2 mr-2">4</div>
+                                </div>
+                                <div>
+                                    <i class="fa fa-star text-warning"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-9 pl-2">
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    <div class="progress progress-lg mt-1">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 45%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 p-lg-0">
+                                    45%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-2 pr-0">
+                            <div class="d-flex">
+                                <div>
+                                    <div class="text-dark font-weight-bold mb-2 mr-2">3</div>
+                                </div>
+                                <div>
+                                    <i class="fa fa-star text-warning"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-9 pl-2">
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    <div class="progress progress-lg mt-1">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 p-lg-0">
+                                    30%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-2 pr-0">
+                            <div class="d-flex">
+                                <div>
+                                    <div class="text-dark font-weight-bold mb-2 mr-2">2</div>
+                                </div>
+                                <div>
+                                    <i class="fa fa-star text-warning"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-9 pl-2">
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    <div class="progress progress-lg mt-1">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 8%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 p-lg-0">
+                                    8%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-2 pr-0">
+                            <div class="d-flex">
+                                <div>
+                                    <div class="text-dark font-weight-bold mb-2 mr-2">5</div>
+                                </div>
+                                <div>
+                                    <i class="fa fa-star text-warning"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-9 pl-2">
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    <div class="progress progress-lg mt-1">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 1%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 p-lg-0">
+                                    1%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p class="mb-2 mt-3 mb-3 text-dark font-weight-bold">Kategoriye göre derecelendirme</p>
+                            <div class="d-flex">
+                                <div>
+                                    <div class="text-dark font-weight-bold mb-2 mr-2">4.3</div>
+                                </div>
+                                <div class="mr-2">
+                                    <i class="fa fa-star text-warning"></i>
+                                </div>
+                                <div><p>Hizmet</p></div>
+                            </div>
+                            <div class="d-flex">
+                                <div>
+                                    <div class="text-dark font-weight-bold mb-2 mr-2">3.5</div>
+                                </div>
+                                <div class="mr-2">
+                                    <i class="fa fa-star text-warning"></i>
+                                </div>
+                                <div><p>Servis</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- base:js -->
+<script src="~/regal/vendors/base/vendor.bundle.base.js"></script>
+<script src="~/regal/js/off-canvas.js"></script>
+<script src="~/regal/js/hoverable-collapse.js"></script>
+<script src="~/regal/js/template.js"></script>
+<script src="~/regal/vendors/chart.js/Chart.min.js"></script>
+<script src="~/regal/vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
+<script src="~/regal/js/dashboard.js"></script>
